@@ -38,6 +38,7 @@ registerBlockType("lilo-blocks/card-group", {
 					url: null,
 					alt: null,
 					id: null,
+					isOpen: true,
 				},
 			],
 		},
@@ -56,13 +57,14 @@ registerBlockType("lilo-blocks/card-group", {
 		const handleAddCard = () => {
 			setAttributes({
 				cards: [
-					...cards,
+					...cards.map((card) => ({ ...card, isOpen: false })),
 					{
 						title: "$33M",
 						description: "Trackable revenue generated across our portfolio",
 						url: null,
 						alt: null,
 						id: null,
+						isOpen: true,
 					},
 				],
 			});
@@ -141,7 +143,10 @@ registerBlockType("lilo-blocks/card-group", {
 
 				<InspectorControls>
 					{cards.map((card, idx) => (
-						<PanelBody key={idx} title={`Card ${idx + 1} - ${card.title}`}>
+						<PanelBody
+							key={idx}
+							title={`Card ${idx + 1} - ${card.title}`}
+							opened={card.isOpen}>
 							<TextControl
 								value={card.title}
 								onChange={handleChange(idx)("title")}
