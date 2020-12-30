@@ -76,6 +76,8 @@ function lilo_blocks_register() {
   lilo_blocks_register_block_type('card-group');
   lilo_blocks_register_block_type('partners');
   lilo_blocks_register_block_type('partner');
+  lilo_blocks_register_block_type('home-banner');
+  lilo_blocks_register_block_type('home-banner-cta');
 }
 add_action('init', 'lilo_blocks_register');
 

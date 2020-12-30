@@ -1,0 +1,15 @@
+.banner {
+	&__actions {
+		display: block;
+
+		.block-editor-block-list__layout {
+			display: flex;
+
+			.block-editor-block-list__block {
+				&:not(:last-of-type) {
+					margin-right: 2rem;
+				}
+			}
+		}
+	}
+}
