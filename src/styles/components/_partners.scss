@@ -1,0 +1,17 @@
+.partners {
+  background-color: $color-bg-light;
+
+  &__inner {
+    @include container(true);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    justify-content: start;
+    align-items: center;
+    column-gap: 5rem;
+    row-gap: 2.5rem;
+  }
+
+  &__item {
+    max-width: 200px;
+  }
+}

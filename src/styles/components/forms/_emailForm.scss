@@ -1,0 +1,62 @@
+.email-form {
+  max-width: 30rem;
+  position: relative;
+
+  &__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: $color-bg;
+  }
+
+  &__bg {
+    position: absolute;
+    right: -1rem;
+    bottom: -1rem;
+    width: 90%;
+    height: 90%;
+    background: url("/images/one_dot.svg") repeat bottom right;
+  }
+
+  h4 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  input {
+    font-size: 1.5rem;
+    padding: 5px 0;
+    border-bottom: 1px solid $color-gray;
+    margin-bottom: 2rem;
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      border-bottom: 1px solid $color-orange;
+    }
+
+    &::placeholder {
+      color: $color-gray;
+    }
+  }
+
+  button {
+    align-self: flex-start;
+    font-size: 1.6rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid $color-black;
+    border-radius: 4px;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      background-color: $color-black;
+      color: #ffffff;
+    }
+  }
+}

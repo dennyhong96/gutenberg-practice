@@ -1,0 +1,31 @@
+@mixin container($padding-vert: false) {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 4rem;
+  padding-right: 4rem;
+
+  @if $padding-vert {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+%heading-1 {
+  font-size: 6.4rem;
+  font-weight: 500;
+  line-height: 6.6rem;
+  letter-spacing: -2px;
+}
+
+%heading-2 {
+  font-size: 4.8rem;
+  line-height: 5.2rem;
+  letter-spacing: -1px;
+}
+
+%paragraph {
+  font-size: 2rem;
+  letter-spacing: -0.4px;
+}
