@@ -107,13 +107,7 @@ registerBlockType("lilo-blocks/section-header", {
 						onChange={handleChange("paragraph")}
 					/>
 
-					<a
-						className="section-header__link"
-						href={linkUrl}
-						target="_blank"
-						rel="noopener noreferrer">
-						{linkLabel}
-					</a>
+					<a className="section-header__link">{linkLabel}</a>
 				</div>
 
 				<InspectorControls>
