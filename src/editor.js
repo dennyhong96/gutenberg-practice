@@ -5,3 +5,4 @@ import "./blocks/bigBg";
 import "./blocks/cardGroup";
 import "./blocks/partners";
 import "./blocks/homeBanner";
+import "./blocks/twoColImage";

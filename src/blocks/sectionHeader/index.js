@@ -10,7 +10,12 @@ registerBlockType("lilo-blocks/section-header", {
 	category: "lilo-category",
 
 	attributes: {
-		// Full width
+		// Full width block
+		getEditWrapperProps() {
+			return {
+				"data-align": "full",
+			};
+		},
 		align: {
 			type: "string",
 			default: "full",
@@ -48,6 +53,10 @@ registerBlockType("lilo-blocks/section-header", {
 			attribute: "href",
 			default: "/service",
 		},
+		isInternal: {
+			type: "boolean",
+			default: false,
+		},
 		linkTargetBlank: {
 			type: "boolean",
 			default: false,
@@ -56,13 +65,6 @@ registerBlockType("lilo-blocks/section-header", {
 			type: "boolean",
 			default: false,
 		},
-	},
-
-	// Full width
-	getEditWrapperProps() {
-		return {
-			"data-align": "full",
-		};
 	},
 
 	edit({ attributes, setAttributes }) {
@@ -74,6 +76,7 @@ registerBlockType("lilo-blocks/section-header", {
 			linkUrl,
 			linkTargetBlank,
 			linkNoFollow,
+			isInternal,
 		} = attributes;
 
 		const handleChange = (key) => (val) => setAttributes({ [key]: val });
@@ -127,15 +130,24 @@ registerBlockType("lilo-blocks/section-header", {
 							onChange={handleChange("linkUrl")}
 						/>
 						<ToggleControl
-							label="Open in new tab?"
-							checked={linkTargetBlank}
-							onChange={(val) => setAttributes({ linkTargetBlank: val })}
+							label="Is this an internal link?"
+							checked={isInternal}
+							onChange={(val) => setAttributes({ isInternal: val })}
 						/>
-						<ToggleControl
-							label="Ignore by search engine?"
-							checked={linkNoFollow}
-							onChange={(val) => setAttributes({ linkNoFollow: val })}
-						/>
+						{!isInternal && (
+							<Fragment>
+								<ToggleControl
+									label="Open in new tab?"
+									checked={linkTargetBlank}
+									onChange={(val) => setAttributes({ linkTargetBlank: val })}
+								/>
+								<ToggleControl
+									label="Ignored by search engine?"
+									checked={linkNoFollow}
+									onChange={(val) => setAttributes({ linkNoFollow: val })}
+								/>
+							</Fragment>
+						)}
 					</PanelBody>
 				</InspectorControls>
 			</Fragment>
@@ -151,6 +163,7 @@ registerBlockType("lilo-blocks/section-header", {
 			linkUrl,
 			linkTargetBlank,
 			linkNoFollow,
+			isInternal,
 		} = attributes;
 
 		return (
@@ -168,13 +181,14 @@ registerBlockType("lilo-blocks/section-header", {
 				</p>
 
 				<a
-					className="section-header__link"
-					href={linkUrl}
-					target={classNames({ ["_blank"]: linkTargetBlank })}
-					rel={classNames({
+					data-internal={classNames("", { ["internal"]: isInternal })}
+					data-target={classNames("", { ["_blank"]: linkTargetBlank })}
+					data-rel={classNames("", {
 						["noopener noreferrer"]: linkTargetBlank,
 						["nofollow"]: linkNoFollow,
-					})}>
+					})}
+					href={linkUrl}
+					className={"banner__cta"}>
 					{linkLabel}
 				</a>
 			</div>

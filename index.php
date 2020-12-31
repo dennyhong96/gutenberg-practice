@@ -78,6 +78,7 @@ function lilo_blocks_register() {
   lilo_blocks_register_block_type('partner');
   lilo_blocks_register_block_type('home-banner');
   lilo_blocks_register_block_type('home-banner-cta');
+  lilo_blocks_register_block_type('two-col-image');
 }
 add_action('init', 'lilo_blocks_register');
 

@@ -1,0 +1,36 @@
+.two-col-image {
+	background-color: $color-bg-dark;
+
+	&__inner {
+		@include container(true);
+		display: flex;
+		align-items: center;
+
+		@media (max-width: 768px) {
+			flex-direction: column;
+		}
+	}
+
+	&__left {
+		flex: 1;
+
+		img {
+			padding: 4rem;
+
+			@media (max-width: 768px) {
+				padding: 0;
+			}
+		}
+	}
+
+	&__right {
+		flex: 1;
+		margin-left: 4rem;
+
+		@media (max-width: 768px) {
+			margin-bottom: 2rem;
+			margin-left: 0;
+			order: -1;
+		}
+	}
+}

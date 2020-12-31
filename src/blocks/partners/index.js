@@ -9,18 +9,16 @@ registerBlockType("lilo-blocks/partners", {
 	category: "lilo-category",
 
 	attributes: {
-		// Full width
+		// Full width block
+		getEditWrapperProps() {
+			return {
+				"data-align": "full",
+			};
+		},
 		align: {
 			type: "string",
 			default: "full",
 		},
-	},
-
-	// Full width
-	getEditWrapperProps() {
-		return {
-			"data-align": "full",
-		};
 	},
 
 	edit() {

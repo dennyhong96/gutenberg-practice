@@ -22,7 +22,12 @@ registerBlockType("lilo-blocks/home-banner-cta", {
 	parent: ["lilo-blocks/home-banner"],
 
 	attributes: {
-		// Full width
+		// Full width block
+		getEditWrapperProps() {
+			return {
+				"data-align": "full",
+			};
+		},
 		align: {
 			type: "string",
 			default: "full",
@@ -49,21 +54,25 @@ registerBlockType("lilo-blocks/home-banner-cta", {
 			type: "boolean",
 			default: false,
 		},
+		isInternal: {
+			type: "boolean",
+			default: false,
+		},
 		style: {
 			type: "string",
 			default: "filled",
 		},
 	},
 
-	// Full width
-	getEditWrapperProps() {
-		return {
-			"data-align": "full",
-		};
-	},
-
 	edit({ attributes, setAttributes }) {
-		const { label, href, targetBlank, noFollow, style } = attributes;
+		const {
+			label,
+			href,
+			targetBlank,
+			noFollow,
+			style,
+			isInternal,
+		} = attributes;
 
 		const handleChange = (key) => (val) => {
 			setAttributes({ [key]: val });
@@ -112,15 +121,27 @@ registerBlockType("lilo-blocks/home-banner-cta", {
 							onChange={handleChange("href")}
 						/>
 						<ToggleControl
-							label="Open in new tab?"
-							checked={targetBlank}
-							onChange={handleChange("targetBlank").bind(this, !targetBlank)}
+							label="Is this an internal link?"
+							checked={isInternal}
+							onChange={handleChange("isInternal").bind(this, !isInternal)}
 						/>
-						<ToggleControl
-							label="Ignored by search engine?"
-							checked={noFollow}
-							onChange={handleChange("targetBlank").bind(this, !noFollow)}
-						/>
+						{!isInternal && (
+							<Fragment>
+								<ToggleControl
+									label="Open in new tab?"
+									checked={targetBlank}
+									onChange={handleChange("targetBlank").bind(
+										this,
+										!targetBlank
+									)}
+								/>
+								<ToggleControl
+									label="Ignored by search engine?"
+									checked={noFollow}
+									onChange={handleChange("noFollow").bind(this, !noFollow)}
+								/>
+							</Fragment>
+						)}
 					</PanelBody>
 				</InspectorControls>
 			</Fragment>
@@ -128,16 +149,24 @@ registerBlockType("lilo-blocks/home-banner-cta", {
 	},
 
 	save({ attributes }) {
-		const { label, href, targetBlank, noFollow, style } = attributes;
+		const {
+			label,
+			href,
+			targetBlank,
+			noFollow,
+			style,
+			isInternal,
+		} = attributes;
 
 		return (
 			<a
-				href={href}
-				target={className({ ["_blank"]: targetBlank })}
-				rel={className({
+				data-internal={className("", { ["internal"]: isInternal })}
+				data-target={className("", { ["_blank"]: targetBlank })}
+				data-rel={className("", {
 					["noopener noreferrer"]: targetBlank,
 					["nofollow"]: noFollow,
 				})}
+				href={href}
 				className={className("banner__cta", {
 					["banner__cta--alt"]: style === "outlined",
 				})}>

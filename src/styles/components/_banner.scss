@@ -1,78 +1,90 @@
 .banner {
-  background-color: $color-bg;
+	background-color: $color-bg;
 
-  &__inner {
-    @include container(true);
-    display: flex;
-    justify-content: space-between;
-  }
+	&__inner {
+		@include container(true);
+		display: flex;
+		justify-content: space-between;
+	}
 
-  &__left {
-    margin-right: 2rem;
-    padding-top: 5rem;
-    max-width: 500px;
+	&__left {
+		margin-right: 2rem;
+		padding-top: 5rem;
+		max-width: 500px;
 
-    h1 {
-      @extend %heading-1;
-      margin-bottom: 3rem;
-    }
+		h1 {
+			@extend %heading-1;
+			margin-bottom: 3rem;
+		}
 
-    p {
-      @extend %paragraph;
-      margin-bottom: 3rem;
-    }
-  }
+		p {
+			@extend %paragraph;
+			margin-bottom: 3rem;
+		}
+	}
 
-  &__actions {
-    display: flex;
-  }
+	&__actions {
+		display: flex;
+	}
 
-  &__cta {
-    padding: 1rem 1.5rem;
-    font-size: 1.6rem;
-    letter-spacing: -0.2px;
-    color: $color-white;
-    background-color: $color-orange;
-    border: 1px solid $color-orange;
-    border-radius: 4px;
-    transition: 0.2s ease-in-out;
+	&__cta {
+		padding: 1rem 1.5rem;
+		font-size: 1.6rem;
+		letter-spacing: -0.2px;
+		color: $color-white;
+		background-color: $color-orange;
+		border: 1px solid $color-orange;
+		border-radius: 4px;
+		transition: 0.2s ease-in-out;
 
-    &:hover {
-      background-color: transparent;
-      color: $color-black;
-    }
+		&:hover {
+			background-color: transparent;
+			color: $color-black;
+		}
 
-    &--alt {
-      color: $color-black;
-      background-color: transparent;
-      border: 1px solid $color-black;
+		&--alt {
+			color: $color-black;
+			background-color: transparent;
+			border: 1px solid $color-black;
 
-      &:hover {
-        background-color: $color-black;
-        color: $color-white;
-      }
-    }
+			&:hover {
+				background-color: $color-black;
+				color: $color-white;
+			}
+		}
 
-    &:not(:last-of-type) {
-      margin-right: 2rem;
-    }
-  }
+		&:not(:last-of-type) {
+			margin-right: 2rem;
+		}
+	}
 
-  &__right {
-    position: relative;
-    flex: 0 0 auto;
+	&__right {
+		position: relative;
+		flex: 0 0 auto;
 
-    img {
-      width: 100%;
-      position: relative;
-      z-index: 1;
-    }
+		img {
+			width: 100%;
+			position: relative;
+			z-index: 1;
+		}
 
-    video {
-      position: absolute;
-      top: 28px;
-      width: 256px;
-      left: 170px;
-    }
-  }
+		video {
+			position: absolute;
+			top: 28px;
+			width: 256px;
+			left: 170px;
+		}
+
+		@media (max-width: 992px) {
+			transform: scale(0.75);
+		}
+
+		@media (max-width: 825px) {
+			transform: scale(0.6);
+		}
+
+		@media (max-width: 768px) {
+			display: none;
+		}
+	}
 }

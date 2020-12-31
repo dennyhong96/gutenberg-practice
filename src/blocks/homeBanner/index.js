@@ -18,7 +18,12 @@ registerBlockType("lilo-blocks/home-banner", {
 	category: "lilo-category",
 
 	attributes: {
-		// Full width
+		// Full width block
+		getEditWrapperProps() {
+			return {
+				"data-align": "full",
+			};
+		},
 		align: {
 			type: "string",
 			default: "full",
@@ -67,13 +72,6 @@ registerBlockType("lilo-blocks/home-banner", {
 			type: "number",
 			default: null,
 		},
-	},
-
-	// Full width
-	getEditWrapperProps() {
-		return {
-			"data-align": "full",
-		};
 	},
 
 	edit({ attributes, setAttributes }) {
