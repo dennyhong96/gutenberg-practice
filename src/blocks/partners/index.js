@@ -8,18 +8,17 @@ registerBlockType("lilo-blocks/partners", {
 	description: "Partners",
 	category: "lilo-category",
 
-	attributes: {
-		// Full width block
-		getEditWrapperProps() {
-			return {
-				"data-align": "full",
-			};
-		},
-		align: {
-			type: "string",
-			default: "full",
-		},
+	// Full width block
+	getEditWrapperProps() {
+		return {
+			"data-align": "full",
+		};
 	},
+	supports: {
+		align: ["full"],
+	},
+
+	attributes: {},
 
 	edit() {
 		return (
@@ -36,7 +35,7 @@ registerBlockType("lilo-blocks/partners", {
 
 	save() {
 		return (
-			<section className="partners">
+			<section className="partners" data-gsap="stagger-up">
 				<div className="partners__inner">
 					<InnerBlocks.Content />
 				</div>

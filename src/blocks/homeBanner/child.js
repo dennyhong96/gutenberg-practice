@@ -4,6 +4,7 @@ import {
 	InspectorControls,
 	BlockControls,
 	URLInput,
+	useBlockProps,
 } from "@wordpress/block-editor";
 import {
 	PanelBody,
@@ -78,9 +79,13 @@ registerBlockType("lilo-blocks/home-banner-cta", {
 			setAttributes({ [key]: val });
 		};
 
+		const blockProps = useBlockProps();
+		console.log(blockProps);
+
 		return (
 			<Fragment>
 				<a
+					{...blockProps}
 					target={className({ ["_blank"]: targetBlank })}
 					rel={className({
 						["noopener noreferrer"]: targetBlank,

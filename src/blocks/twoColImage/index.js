@@ -136,11 +136,14 @@ registerBlockType("lilo-blocks/two-col-image", {
 		return (
 			<section className="two-col-image">
 				<div className="two-col-image__inner">
-					<div className="two-col-image__left">
+					<div
+						className="two-col-image__left"
+						data-gsap="fade-in-left"
+						data-gsap-config="delay=0.35">
 						<img src={url} alt={alt} />
 					</div>
 
-					<div className="two-col-image__right">
+					<div className="two-col-image__right" data-gsap="fade-in-right">
 						<InnerBlocks.Content />
 					</div>
 				</div>

@@ -114,7 +114,7 @@ registerBlockType("lilo-blocks/partner", {
 		const { url, alt } = attributes;
 
 		return (
-			<div className="partners__item">
+			<div className="partners__item" data-gsap-child="stagger-up">
 				<img src={url} alt={alt} />
 			</div>
 		);

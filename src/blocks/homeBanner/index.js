@@ -8,7 +8,13 @@ import {
 	MediaPlaceholder,
 	RichText,
 } from "@wordpress/block-editor";
-import { PanelBody, TextControl, Button } from "@wordpress/components";
+import {
+	PanelBody,
+	TextControl,
+	Button,
+	ToggleControl,
+} from "@wordpress/components";
+import classNames from "classnames";
 
 import "./child";
 
@@ -17,18 +23,17 @@ registerBlockType("lilo-blocks/home-banner", {
 	description: "Home Banner",
 	category: "lilo-category",
 
-	attributes: {
-		// Full width block
-		getEditWrapperProps() {
-			return {
-				"data-align": "full",
-			};
-		},
-		align: {
-			type: "string",
-			default: "full",
-		},
+	// Full width block
+	getEditWrapperProps() {
+		return {
+			"data-align": "full",
+		};
+	},
+	supports: {
+		align: ["full"],
+	},
 
+	attributes: {
 		title: {
 			type: "string",
 			source: "html",
@@ -72,6 +77,11 @@ registerBlockType("lilo-blocks/home-banner", {
 			type: "number",
 			default: null,
 		},
+
+		animate: {
+			type: "boolean",
+			default: false,
+		},
 	},
 
 	edit({ attributes, setAttributes }) {
@@ -83,6 +93,7 @@ registerBlockType("lilo-blocks/home-banner", {
 			imgId,
 			vidUrl,
 			vidId,
+			animate,
 		} = attributes;
 
 		const handleChange = (key) => (val) => {
@@ -200,31 +211,60 @@ registerBlockType("lilo-blocks/home-banner", {
 							</Fragment>
 						)}
 					</PanelBody>
+
+					<PanelBody
+						icon={
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor">
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={2}
+									d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+								/>
+							</svg>
+						}
+						title="Animation">
+						<ToggleControl
+							label="Enable animation?"
+							checked={animate}
+							onChange={handleChange("animate")}
+						/>
+					</PanelBody>
 				</InspectorControls>
 			</Fragment>
 		);
 	},
 
 	save({ attributes }) {
-		const { title, subtitle, imgUrl, imgAlt, vidUrl } = attributes;
+		const { title, subtitle, imgUrl, imgAlt, vidUrl, animate } = attributes;
 
 		return (
 			<section className="banner">
 				<div className="banner__inner">
-					<div className="banner__left">
-						<h1>
+					<div
+						className="banner__left"
+						data-gsap={classNames({ "stagger-up": animate })}>
+						<h1 data-gsap-child={classNames({ "stagger-up": animate })}>
 							<RichText.Content value={title} />
 						</h1>
-						<p>
+						<p data-gsap-child={classNames({ "stagger-up": animate })}>
 							<RichText.Content value={subtitle} />
 						</p>
 
-						<div className="banner__actions">
+						<div
+							data-gsap-child={classNames({ "stagger-up": animate })}
+							className="banner__actions">
 							<InnerBlocks.Content />
 						</div>
 					</div>
 
-					<div className="banner__right">
+					<div
+						className="banner__right"
+						data-gsap={classNames({ "fade-in-right": animate })}>
 						<img className="banner__phone-image" src={imgUrl} alt={imgAlt} />
 						<video
 							className="banner__phone-video"

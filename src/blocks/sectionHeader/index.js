@@ -9,18 +9,17 @@ registerBlockType("lilo-blocks/section-header", {
 	description: "Section Header",
 	category: "lilo-category",
 
-	attributes: {
-		// Full width block
-		getEditWrapperProps() {
-			return {
-				"data-align": "full",
-			};
-		},
-		align: {
-			type: "string",
-			default: "full",
-		},
+	// Full width block
+	getEditWrapperProps() {
+		return {
+			"data-align": "full",
+		};
+	},
+	supports: {
+		align: ["full"],
+	},
 
+	attributes: {
 		subtitle: {
 			type: "string",
 			source: "html",
@@ -182,7 +181,7 @@ registerBlockType("lilo-blocks/section-header", {
 						["nofollow"]: linkNoFollow,
 					})}
 					href={linkUrl}
-					className={"banner__cta"}>
+					className="section-header__link">
 					{linkLabel}
 				</a>
 			</div>

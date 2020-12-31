@@ -22,18 +22,17 @@ registerBlockType("lilo-blocks/card-group", {
 	description: "Card Group",
 	category: "lilo-category",
 
-	attributes: {
-		// Full width block
-		getEditWrapperProps() {
-			return {
-				"data-align": "full",
-			};
-		},
-		align: {
-			type: "string",
-			default: "full",
-		},
+	// Full width block
+	getEditWrapperProps() {
+		return {
+			"data-align": "full",
+		};
+	},
+	supports: {
+		align: ["full"],
+	},
 
+	attributes: {
 		cards: {
 			type: "array",
 			default: [
@@ -198,11 +197,15 @@ registerBlockType("lilo-blocks/card-group", {
 		return (
 			<section className="cards-group">
 				<div className="cards-group__inner">
-					<InnerBlocks.Content />
+					<div
+						data-gsap="fade-in-up"
+						style={{ zIndex: 1, position: "relative" }}>
+						<InnerBlocks.Content />
+					</div>
 
-					<div className="cards-group__cards">
+					<div className="cards-group__cards" data-gsap="stagger-up">
 						{cards.map((card, idx) => (
-							<div className="card" key={idx}>
+							<div className="card" key={idx} data-gsap-child="stagger-up">
 								<h4 className="card__title">{card.title}</h4>
 								<p className="card__description">{card.description}</p>
 								{card.url && (

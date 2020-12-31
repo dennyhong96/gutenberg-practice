@@ -7,25 +7,30 @@ import {
 	MediaUpload,
 	MediaPlaceholder,
 } from "@wordpress/block-editor";
-import { PanelBody, TextControl, Button } from "@wordpress/components";
+import {
+	PanelBody,
+	TextControl,
+	Button,
+	ToggleControl,
+} from "@wordpress/components";
+import classNames from "classnames";
 
 registerBlockType("lilo-blocks/big-bg", {
 	title: "Big Background",
 	description: "Big Background",
 	category: "lilo-category",
 
-	attributes: {
-		// Full width block
-		getEditWrapperProps() {
-			return {
-				"data-align": "full",
-			};
-		},
-		align: {
-			type: "string",
-			default: "full",
-		},
+	// Full width block
+	getEditWrapperProps() {
+		return {
+			"data-align": "full",
+		};
+	},
+	supports: {
+		align: ["full"],
+	},
 
+	attributes: {
 		desktopUrl: {
 			type: "string",
 			source: "attribute",
@@ -56,6 +61,11 @@ registerBlockType("lilo-blocks/big-bg", {
 		mobileId: {
 			type: "number",
 		},
+
+		animate: {
+			type: "boolean",
+			default: true,
+		},
 	},
 
 	edit({ attributes, setAttributes }) {
@@ -66,6 +76,7 @@ registerBlockType("lilo-blocks/big-bg", {
 			mobileUrl,
 			mobileAlt,
 			mobileId,
+			animate,
 		} = attributes;
 
 		const handleDesktopImageSelect = ({ url, alt, id }) => {
@@ -163,18 +174,51 @@ registerBlockType("lilo-blocks/big-bg", {
 							</Fragment>
 						)}
 					</PanelBody>
+
+					<PanelBody
+						icon={
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor">
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={2}
+									d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+								/>
+							</svg>
+						}
+						title="Animation">
+						<ToggleControl
+							label="Enable animation?"
+							checked={animate}
+							onChange={(val) => setAttributes({ animate: val })}
+						/>
+					</PanelBody>
 				</InspectorControls>
 			</Fragment>
 		);
 	},
 
 	save({ attributes }) {
-		const { desktopUrl, desktopAlt, mobileUrl, mobileAlt } = attributes;
+		const {
+			desktopUrl,
+			desktopAlt,
+			mobileUrl,
+			mobileAlt,
+			animate,
+		} = attributes;
 
 		return (
 			<section className="big-bg">
 				<div className="big-bg__inner">
-					<InnerBlocks.Content />
+					<div
+						data-gsap={classNames({ "fade-in-up": animate })}
+						style={{ zIndex: 1, position: "relative" }}>
+						<InnerBlocks.Content />
+					</div>
 					{desktopUrl && (
 						<div className="big-bg__img-box">
 							<img src={desktopUrl} alt={desktopAlt} />
