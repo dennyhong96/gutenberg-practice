@@ -72,13 +72,6 @@ function lilo_blocks_register() {
 
   // Register blocks
   lilo_blocks_register_block_type('section-header');
-  lilo_blocks_register_block_type('big-bg');
-  lilo_blocks_register_block_type('card-group');
-  lilo_blocks_register_block_type('partners');
-  lilo_blocks_register_block_type('partner');
-  lilo_blocks_register_block_type('home-banner');
-  lilo_blocks_register_block_type('home-banner-cta');
-  lilo_blocks_register_block_type('two-col-image');
   lilo_blocks_register_block_type('cta');
   lilo_blocks_register_block_type('cta-button');
 }
