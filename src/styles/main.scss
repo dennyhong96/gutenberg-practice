@@ -1,17 +1,36 @@
-@import "~reset-css/reset";
+// @import "~reset-css/reset";
 @import "config/variables";
-@import "config/utils";
-@import "config/base";
+// @import "config/utils";
+// @import "config/base";
+
+html {
+	scroll-behavior: smooth;
+	box-sizing: border-box;
+
+	// 10px / 16px = 62.5% : 1rem = 10px
+	font-size: 62.5%;
+	@media (max-width: 992px) {
+		font-size: 57.5%;
+	}
+	@media (max-width: 768px) {
+		font-size: 52.5%;
+	}
+	@media (max-width: 576px) {
+		font-size: 47.5%;
+	}
+}
 
 // @import "components/layout/header";
 // @import "components/layout/footer";
 // @import "components/forms/emailForm";
-@import "components/banner";
-@import "components/partners";
-@import "components/cardsGroup";
-@import "components/sectionHeader";
-@import "components/bigBg";
-@import "components/twoColImage";
+// @import "components/banner";
+// @import "components/partners";
+// @import "components/cardsGroup";
+// @import "components/sectionHeader";
+// @import "components/bigBg";
+// @import "components/twoColImage";
 
-@import "editor/partners";
-@import "editor/banner";
+// @import "editor/partners";
+// @import "editor/banner";
+
+@import "./config/button";

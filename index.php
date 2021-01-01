@@ -79,6 +79,8 @@ function lilo_blocks_register() {
   lilo_blocks_register_block_type('home-banner');
   lilo_blocks_register_block_type('home-banner-cta');
   lilo_blocks_register_block_type('two-col-image');
+  lilo_blocks_register_block_type('cta');
+  lilo_blocks_register_block_type('cta-button');
 }
 add_action('init', 'lilo_blocks_register');
 
@@ -91,4 +93,54 @@ function lilo_blocks_enqueue_assets() {
   );
 }
 add_action( "enqueue_block_editor_assets", "lilo_blocks_enqueue_assets" );
+
+function lilo_blocks_preset_theme_color() {
+	// Disable Default Custom Colors
+	add_theme_support( 'disable-custom-colors' );
+
+	// Editor Color Palette
+	add_theme_support( 'editor-color-palette', array(
+		array(
+			'name'  => __( 'Black', 'lilo-blocks' ),
+			'slug'  => 'blue',
+			'color'	=> '#1d1916',
+		),
+		array(
+			'name'  => __( 'White', 'lilo-blocks' ),
+			'slug'  => 'white',
+			'color' => '#ffffff',
+		),
+		array(
+			'name'  => __( 'Gray', 'lilo-blocks' ),
+			'slug'  => 'gray',
+			'color' => '#878482',
+		),
+		array(
+			'name'	=> __( 'Light Gray', 'lilo-blocks' ),
+			'slug'	=> 'gray-light',
+			'color'	=> '#ece7e3',
+		),
+		array(
+			'name'	=> __( 'Orange', 'lilo-blocks' ),
+			'slug'	=> 'orange',
+			'color'	=> '#fc5811',
+		),
+		array(
+			'name'	=> __( 'Background', 'lilo-blocks' ),
+			'slug'	=> 'bg',
+			'color'	=> '#f9f4f0',
+		),
+		array(
+			'name'	=> __( 'Background Light', 'lilo-blocks' ),
+			'slug'	=> 'bg-light',
+			'color'	=> '#fcfaf8',
+		),
+		array(
+			'name'	=> __( 'Background Dark', 'lilo-blocks' ),
+			'slug'	=> 'bg-dark',
+			'color'	=> '#f4eae1',
+		),
+	) );
+}
+add_action( 'after_setup_theme', 'lilo_blocks_preset_theme_color' );
 ?>

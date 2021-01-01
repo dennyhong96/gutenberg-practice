@@ -100,11 +100,6 @@ module.exports = (env, argv) => {
 
 		// Watch Files
 		watch: isDevelopment(),
-		watchOptions: {
-			aggregateTimeout: 200,
-			poll: 1000,
-			ignored: "node_modules/**",
-		},
 
 		// Skip bundling: Look for global variable instead of node_modules
 		externals: {

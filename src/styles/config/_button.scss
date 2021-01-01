@@ -1,0 +1,51 @@
+.wp-block-lilo-blocks-cta {
+	display: flex;
+
+	// Editor
+	.block-editor-block-list__layout {
+		display: flex;
+		.block-editor-block-list__block {
+			&:not(:last-child) {
+				margin-right: 1rem;
+			}
+		}
+	}
+
+	.wp-block-lilo-blocks-cta-button {
+		font-size: 1.6rem;
+		padding: 1rem 1.5rem;
+		border-radius: 4px;
+		transition: 0.2s ease-out;
+
+		// Editor
+		.block-editor-rich-text__editable.rich-text {
+			display: inline;
+		}
+
+		&:not(:last-child) {
+			margin-right: 1rem;
+		}
+
+		&.is-style-primary {
+			color: $color-white;
+			background-color: $color-orange;
+			border: 1px solid $color-orange;
+
+			&:hover {
+				color: $color-orange;
+				background-color: transparent;
+			}
+		}
+
+		&.is-style-secondary {
+			color: $color-black;
+			background-color: transparent;
+			border: 1px solid $color-black;
+
+			&:hover {
+				color: $color-white;
+				background-color: $color-black;
+			}
+		}
+	}
+}

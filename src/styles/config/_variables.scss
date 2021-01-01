@@ -11,3 +11,21 @@ $color-bg-light: #fcfaf8;
 $color-bg-dark: #f4eae1;
 
 $zIndex-navbar: 25;
+
+// Gutenberg color options
+// -- see editor-color-palette in functions.php
+$colors: (black, #1d1916), (white, #ffffff), (gray, #878482),
+	(gray-light, #ece7e3), (orange, #fc5811), (bg, #f9f4f0), (bg-light, #f9f4f0),
+	(bg-dark, #f4eae1);
+
+/* Color Options
+--------------------------------------------- */
+@each $name, $color in $colors {
+	.has-#{$name}-color {
+		color: $color;
+	}
+
+	.has-#{$name}-background-color {
+		background-color: $color;
+	}
+}
