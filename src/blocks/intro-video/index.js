@@ -85,19 +85,37 @@ registerBlockType("lilo-blocks/intro-video", {
 		return (
 			<Fragment>
 				<div className={className}>
-					<img src={imgUrl} alt={imgAlt} />
-					<video src={vidUrl} muted autoPlay loop></video>
+					{imgUrl ? (
+						<img src={imgUrl} alt={imgAlt} />
+					) : (
+						<MediaPlaceholder
+							labels={{
+								title: "Intro Image",
+								instructions: "Add an intro image",
+							}}
+							allowedTypes={["image"]}
+							accept="image/*"
+							onSelect={handleSelectImage}
+						/>
+					)}
+					{vidUrl ? (
+						<video src={vidUrl} muted autoPlay loop></video>
+					) : (
+						<MediaPlaceholder
+							labels={{
+								title: "Intro Video",
+								instructions: "Add an intro video",
+							}}
+							allowedTypes={["video"]}
+							accept="video/*"
+							onSelect={handleSelectVideo}
+						/>
+					)}
 				</div>
 
 				<InspectorControls>
 					<PanelBody title="Banner Image">
-						{!imgUrl ? (
-							<MediaPlaceholder
-								allowedTypes={["image"]}
-								accept="image/*"
-								onSelect={handleSelectImage}
-							/>
-						) : (
+						{imgUrl && (
 							<Fragment>
 								<img width="100%" src={imgUrl} alt={imgAlt} />
 								<MediaUploadCheck>
@@ -122,13 +140,7 @@ registerBlockType("lilo-blocks/intro-video", {
 					</PanelBody>
 
 					<PanelBody title="Banner Video">
-						{!vidUrl ? (
-							<MediaPlaceholder
-								allowedTypes={["video"]}
-								accept="video/*"
-								onSelect={handleSelectVideo}
-							/>
-						) : (
+						{vidUrl && (
 							<Fragment>
 								<video width="100%" src={vidUrl} muted autoPlay loop></video>
 								<MediaUploadCheck>

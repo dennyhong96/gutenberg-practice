@@ -1,0 +1,30 @@
+.wp-block-lilo-blocks-stats-card {
+	padding: 3rem !important;
+	border-radius: 4px !important;
+	height: 100% !important;
+	display: flex !important;
+	flex-direction: column !important;
+
+	&__title {
+		font-size: 6.4rem !important;
+		letter-spacing: -2px !important;
+		font-weight: 300 !important;
+	}
+
+	&__description {
+		margin-bottom: 3rem !important;
+
+		@media (max-width: 768px) {
+			margin-bottom: 1.5rem !important;
+		}
+	}
+
+	&__image {
+		img {
+			margin-left: -1rem !important;
+			margin-bottom: -1rem !important;
+			width: 125px !important;
+			height: auto !important;
+		}
+	}
+}

@@ -26,7 +26,7 @@ registerBlockType("lilo-blocks/home-banner", {
 		return (
 			<div className={className}>
 				<InnerBlocks
-					// allowedBlocks={["lilo-blocks/cta-button"]}
+					allowedBlocks={["core/group"]}
 					template={[
 						[
 							"core/group",
@@ -70,7 +70,17 @@ registerBlockType("lilo-blocks/home-banner", {
 										[
 											"core/column",
 											{ className: "home_banner__right" },
-											[["lilo-blocks/intro-video"]],
+											[
+												[
+													"lilo-blocks/intro-video",
+													{
+														imgUrl:
+															"http://lilo.local/wp-content/uploads/2020/12/banner_image_new-3.png",
+														vidUrl:
+															"http://lilo.local/wp-content/uploads/2020/12/lilo_website_header-video.mp4",
+													},
+												],
+											],
 										],
 									],
 								],
