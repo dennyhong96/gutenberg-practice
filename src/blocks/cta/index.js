@@ -27,8 +27,10 @@ registerBlockType("lilo-blocks/cta", {
 			<div className={className}>
 				<InnerBlocks
 					allowedBlocks={["lilo-blocks/cta-button"]}
-					template={[["lilo-blocks/cta-button"], ["lilo-blocks/cta-button"]]}
-					templateLock="insert"
+					template={[
+						["lilo-blocks/cta-button", { label: "Our services" }],
+						["lilo-blocks/cta-button", { label: "Contact us" }],
+					]}
 				/>
 			</div>
 		);

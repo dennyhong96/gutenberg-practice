@@ -1,0 +1,35 @@
+.home_banner {
+	.home_banner__left {
+		.wp-block-group {
+			max-width: 450px;
+		}
+	}
+
+	.home_banner__right {
+		flex: 0 0 auto;
+
+		.wp-block-lilo-blocks-intro-video {
+			position: relative;
+
+			img {
+				width: 100%;
+				position: relative;
+				z-index: 1;
+			}
+
+			video {
+				position: absolute;
+				top: 28px;
+				left: 170px;
+			}
+		}
+
+		@media (max-width: $break-xlarge) {
+			transform: scale(0.75);
+			margin-right: -8rem;
+		}
+		@media (max-width: 840px) {
+			display: none;
+		}
+	}
+}

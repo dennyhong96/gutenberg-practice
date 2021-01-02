@@ -14,10 +14,15 @@ registerBlockType("lilo-blocks/section-header", {
 	attributes: {},
 
 	edit({ className }) {
-		console.log({ className });
 		return (
 			<div className={className}>
 				<InnerBlocks
+					allowedBlocks={[
+						"core/paragraph",
+						"core/spacer",
+						"core/heading",
+						"lilo-blocks/cta",
+					]}
 					template={[
 						["core/paragraph", { content: "Services" }],
 						["core/spacer", { height: 10 }],
@@ -31,21 +36,8 @@ registerBlockType("lilo-blocks/section-header", {
 							},
 						],
 						["core/spacer", { height: 20 }],
-						[
-							"lilo-blocks/cta",
-							{},
-							[
-								[
-									"lilo-blocks/cta-button",
-									{
-										label: "Our services",
-										url: "#",
-									},
-								],
-							],
-						],
+						["lilo-blocks/cta"],
 					]}
-					templateLock="all"
 				/>
 			</div>
 		);

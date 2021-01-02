@@ -74,6 +74,8 @@ function lilo_blocks_register() {
   lilo_blocks_register_block_type('section-header');
   lilo_blocks_register_block_type('cta');
   lilo_blocks_register_block_type('cta-button');
+  lilo_blocks_register_block_type('intro-video');
+  lilo_blocks_register_block_type('home-banner');
 }
 add_action('init', 'lilo_blocks_register');
 
