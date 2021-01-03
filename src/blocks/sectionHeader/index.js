@@ -27,7 +27,7 @@ registerBlockType("lilo-blocks/section-header", {
 						["core/paragraph", { content: "Services" }],
 						["core/spacer", { height: 10 }],
 						["core/heading", { content: "We scale brands" }],
-						["core/spacer", { height: 20 }],
+						["core/spacer", { height: 25 }],
 						[
 							"core/paragraph",
 							{
@@ -35,7 +35,7 @@ registerBlockType("lilo-blocks/section-header", {
 									"We work alongside your team and brand to be your external growth team, with an in-house feel. We create high-performing content to pair with our paid media strategies to scale your brand, profitably.",
 							},
 						],
-						["core/spacer", { height: 20 }],
+						["core/spacer", { height: 25 }],
 						["lilo-blocks/cta"],
 					]}
 				/>

@@ -77,6 +77,8 @@ function lilo_blocks_register() {
   lilo_blocks_register_block_type('intro-video');
   lilo_blocks_register_block_type('home-banner');
   lilo_blocks_register_block_type('stats-card');
+  lilo_blocks_register_block_type('partners');
+  lilo_blocks_register_block_type('full-bg');
 }
 add_action('init', 'lilo_blocks_register');
 

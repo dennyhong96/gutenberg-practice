@@ -114,8 +114,8 @@ registerBlockType("lilo-blocks/cta-button", {
 			<a
 				href={url}
 				target={classNames("", { _blank: opensInNewTab })}
-				rel={classNames("", {
-					"noopener noreferrer": opensInNewTab,
+				rel={classNames("noopener", {
+					noreferrer: opensInNewTab,
 					nofollow: noFollow,
 				})}>
 				<RichText.Content value={label} />

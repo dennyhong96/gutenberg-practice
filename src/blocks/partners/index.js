@@ -1,14 +1,14 @@
-import { registerBlockType } from "@wordpress/blocks";
+import { registerBlockType, getBlockDefaultClassName } from "@wordpress/blocks";
 import { InnerBlocks } from "@wordpress/block-editor";
-
-import "./child";
+import { __ } from "@wordpress/i18n";
 
 registerBlockType("lilo-blocks/partners", {
-	title: "Partners",
-	description: "Partners",
+	title: __("Partners", "lilo-blocks"),
+
+	description: __("Add a partners block", "lilo-blocks"),
+
 	category: "lilo-category",
 
-	// Full width block
 	getEditWrapperProps() {
 		return {
 			"data-align": "full",
@@ -20,26 +20,69 @@ registerBlockType("lilo-blocks/partners", {
 
 	attributes: {},
 
-	edit() {
+	edit({ className }) {
 		return (
-			<section className="partners">
-				<div className="partners__inner">
-					<InnerBlocks
-						allowedBlocks={["lilo-blocks/partner"]}
-						template={[["lilo-blocks/partner"]]}
-					/>
-				</div>
-			</section>
+			<div className={className}>
+				<InnerBlocks
+					template={[
+						[
+							"core/group",
+							{ backgroundColor: "bg-light", align: "full" },
+							[
+								["core/spacer", { height: 50 }],
+								[
+									"core/columns",
+									{
+										align: "wide",
+									},
+									[
+										[
+											"core/column",
+											{},
+											[["core/image", { className: `${className}__image` }]],
+										],
+										[
+											"core/column",
+											{},
+											[["core/image", { className: `${className}__image` }]],
+										],
+										[
+											"core/column",
+											{},
+											[["core/image", { className: `${className}__image` }]],
+										],
+										[
+											"core/column",
+											{},
+											[["core/image", { className: `${className}__image` }]],
+										],
+										[
+											"core/column",
+											{},
+											[["core/image", { className: `${className}__image` }]],
+										],
+										[
+											"core/column",
+											{},
+											[["core/image", { className: `${className}__image` }]],
+										],
+									],
+								],
+								["core/spacer", { height: 50 }],
+							],
+						],
+					]}
+				/>
+			</div>
 		);
 	},
 
 	save() {
+		const className = getBlockDefaultClassName("lilo-blocks/partners");
 		return (
-			<section className="partners" data-gsap="stagger-up">
-				<div className="partners__inner">
-					<InnerBlocks.Content />
-				</div>
-			</section>
+			<div className={className}>
+				<InnerBlocks.Content />
+			</div>
 		);
 	},
 });
