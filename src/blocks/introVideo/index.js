@@ -6,12 +6,7 @@ import {
 	MediaUpload,
 	MediaPlaceholder,
 } from "@wordpress/block-editor";
-import {
-	PanelBody,
-	TextControl,
-	Button,
-	ToggleControl,
-} from "@wordpress/components";
+import { PanelBody, TextControl, Button } from "@wordpress/components";
 
 registerBlockType("lilo-blocks/intro-video", {
 	title: "Intro Video",
@@ -26,7 +21,7 @@ registerBlockType("lilo-blocks/intro-video", {
 		imgUrl: {
 			type: "string",
 			source: "attribute",
-			attribute: "href",
+			attribute: "src",
 			selector: "img",
 			default: null,
 		},
@@ -39,7 +34,6 @@ registerBlockType("lilo-blocks/intro-video", {
 		},
 		imgId: {
 			type: "number",
-			default: null,
 		},
 		vidUrl: {
 			type: "string",
@@ -50,21 +44,11 @@ registerBlockType("lilo-blocks/intro-video", {
 		},
 		vidId: {
 			type: "number",
-			default: null,
-		},
-
-		animate: {
-			type: "boolean",
-			default: false,
 		},
 	},
 
 	edit({ attributes, setAttributes, className }) {
-		const { imgUrl, imgAlt, imgId, vidUrl, vidId, animate } = attributes;
-
-		const handleChange = (key) => (val) => {
-			setAttributes({ [key]: val });
-		};
+		const { imgUrl, imgAlt, imgId, vidUrl, vidId } = attributes;
 
 		const handleSelectImage = ({ url, alt, id }) => {
 			setAttributes({ imgUrl: url, imgAlt: alt, imgId: id });
@@ -157,29 +141,6 @@ registerBlockType("lilo-blocks/intro-video", {
 							</Fragment>
 						)}
 					</PanelBody>
-
-					<PanelBody
-						icon={
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor">
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth={2}
-									d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-								/>
-							</svg>
-						}
-						title="Animation">
-						<ToggleControl
-							label="Enable animation?"
-							checked={animate}
-							onChange={handleChange("animate")}
-						/>
-					</PanelBody>
 				</InspectorControls>
 			</Fragment>
 		);
@@ -191,7 +152,12 @@ registerBlockType("lilo-blocks/intro-video", {
 		return (
 			<div>
 				<img src={imgUrl} alt={imgAlt} />
-				<video src={vidUrl} muted autoPlay loop></video>
+				<video
+					className="banner__phone-video"
+					src={vidUrl}
+					muted
+					autoPlay
+					loop></video>
 			</div>
 		);
 	},

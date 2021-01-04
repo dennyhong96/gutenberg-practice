@@ -34,37 +34,81 @@ registerBlockType("lilo-blocks/partners", {
 									"core/columns",
 									{
 										align: "wide",
+										className:
+											"gsap gsap-parent gsap-parent-animate-stagger-up",
 									},
 									[
 										[
 											"core/column",
 											{},
-											[["core/image", { className: `${className}__image` }]],
+											[
+												[
+													"core/image",
+													{
+														className: `${className}__image gsap-child-animate-stagger-up`,
+													},
+												],
+											],
 										],
 										[
 											"core/column",
 											{},
-											[["core/image", { className: `${className}__image` }]],
+											[
+												[
+													"core/image",
+													{
+														className: `${className}__image gsap-child-animate-stagger-up`,
+													},
+												],
+											],
 										],
 										[
 											"core/column",
 											{},
-											[["core/image", { className: `${className}__image` }]],
+											[
+												[
+													"core/image",
+													{
+														className: `${className}__image gsap-child-animate-stagger-up`,
+													},
+												],
+											],
 										],
 										[
 											"core/column",
 											{},
-											[["core/image", { className: `${className}__image` }]],
+											[
+												[
+													"core/image",
+													{
+														className: `${className}__image gsap-child-animate-stagger-up`,
+													},
+												],
+											],
 										],
 										[
 											"core/column",
 											{},
-											[["core/image", { className: `${className}__image` }]],
+											[
+												[
+													"core/image",
+													{
+														className: `${className}__image gsap-child-animate-stagger-up`,
+													},
+												],
+											],
 										],
 										[
 											"core/column",
 											{},
-											[["core/image", { className: `${className}__image` }]],
+											[
+												[
+													"core/image",
+													{
+														className: `${className}__image gsap-child-animate-stagger-up`,
+													},
+												],
+											],
 										],
 									],
 								],

@@ -1,4 +1,4 @@
-import { registerBlockType } from "@wordpress/blocks";
+import { registerBlockType, getBlockDefaultClassName } from "@wordpress/blocks";
 import { InnerBlocks } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
 
@@ -15,7 +15,8 @@ registerBlockType("lilo-blocks/section-header", {
 
 	edit({ className }) {
 		return (
-			<div className={className}>
+			<div
+				className={`${className} gsap gsap-parent gsap-parent-animate-stagger-up`}>
 				<InnerBlocks
 					allowedBlocks={[
 						"core/paragraph",
@@ -24,19 +25,32 @@ registerBlockType("lilo-blocks/section-header", {
 						"lilo-blocks/cta",
 					]}
 					template={[
-						["core/paragraph", { content: "Services" }],
+						[
+							"core/paragraph",
+							{
+								content: "Services",
+								className: "gsap-child-animate-stagger-up",
+							},
+						],
 						["core/spacer", { height: 10 }],
-						["core/heading", { content: "We scale brands" }],
+						[
+							"core/heading",
+							{
+								content: "We scale brands",
+								className: "gsap-child-animate-stagger-up",
+							},
+						],
 						["core/spacer", { height: 25 }],
 						[
 							"core/paragraph",
 							{
 								content:
 									"We work alongside your team and brand to be your external growth team, with an in-house feel. We create high-performing content to pair with our paid media strategies to scale your brand, profitably.",
+								className: "gsap-child-animate-stagger-up",
 							},
 						],
 						["core/spacer", { height: 25 }],
-						["lilo-blocks/cta"],
+						["lilo-blocks/cta", { className: "gsap-child-animate-stagger-up" }],
 					]}
 				/>
 			</div>
@@ -44,8 +58,10 @@ registerBlockType("lilo-blocks/section-header", {
 	},
 
 	save() {
+		const className = getBlockDefaultClassName("lilo-blocks/section-header");
 		return (
-			<div>
+			<div
+				className={`${className} gsap gsap-parent gsap-parent-animate-stagger-up`}>
 				<InnerBlocks.Content />
 			</div>
 		);

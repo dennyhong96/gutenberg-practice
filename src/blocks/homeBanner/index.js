@@ -42,7 +42,10 @@ registerBlockType("lilo-blocks/home-banner", {
 									[
 										[
 											"core/column",
-											{ className: "home_banner__left" },
+											{
+												className:
+													"home_banner__left gsap gsap-parent gsap-parent-animate-stagger-up",
+											},
 											[
 												[
 													"core/group",
@@ -51,7 +54,10 @@ registerBlockType("lilo-blocks/home-banner", {
 														["core/spacer", { height: 50 }],
 														[
 															"core/heading",
-															{ content: "Your Full-Funnel Growth Agency" },
+															{
+																content: "Your Full-Funnel Growth Agency",
+																className: "gsap-child-animate-stagger-up",
+															},
 														],
 														["core/spacer", { height: 30 }],
 														[
@@ -59,17 +65,26 @@ registerBlockType("lilo-blocks/home-banner", {
 															{
 																content:
 																	"We help eCommerce companies scale by bringing data-driven decisions and creativity together for a cohesive approach to paid media.",
+																className: "gsap-child-animate-stagger-up",
 															},
 														],
 														["core/spacer", { height: 30 }],
-														["lilo-blocks/cta"],
+														[
+															"lilo-blocks/cta",
+															{
+																className: "gsap-child-animate-stagger-up",
+															},
+														],
 													],
 												],
 											],
 										],
 										[
 											"core/column",
-											{ className: "home_banner__right" },
+											{
+												className:
+													"home_banner__right gsap gsap-animate-fade-in-right",
+											},
 											[["lilo-blocks/intro-video"]],
 										],
 									],

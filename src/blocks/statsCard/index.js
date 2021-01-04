@@ -137,7 +137,7 @@ registerBlockType("lilo-blocks/stats-card", {
 
 		return (
 			<div
-				className={classNames(className, {
+				className={classNames(`${className} gsap-child-animate-stagger-up`, {
 					[backgroundClass]: !!backgroundClass,
 				})}
 				style={{
