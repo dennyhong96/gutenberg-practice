@@ -1,7 +1,19 @@
-// @import "~reset-css/reset";
+// Gutenberg base styles
+@import "~@wordpress/base-styles/colors";
+@import "~@wordpress/base-styles/variables";
+@import "~@wordpress/base-styles/mixins";
+@import "~@wordpress/base-styles/breakpoints";
+@import "~@wordpress/base-styles/animations";
+@import "~@wordpress/base-styles/z-index";
+@import "~@wordpress/base-styles/default-custom-properties";
+
 @import "config/variables";
-// @import "config/utils";
-// @import "config/base";
+@import "config/button";
+
+@import "components/homeBanner";
+@import "components/statsCard";
+@import "components/partners";
+@import "components/bigBg";
 
 html {
 	scroll-behavior: smooth;
@@ -28,28 +40,3 @@ h5,
 h6 {
 	margin: 0 !important;
 }
-// @import "components/layout/header";
-// @import "components/layout/footer";
-// @import "components/forms/emailForm";
-// @import "components/banner";
-@import "components/partners";
-// @import "components/cardsGroup";
-// @import "components/sectionHeader";
-@import "components/bigBg";
-// @import "components/twoColImage";
-
-// @import "editor/partners";
-// @import "editor/banner";
-
-// Gutenberg base styles
-@import "~@wordpress/base-styles/colors";
-@import "~@wordpress/base-styles/variables";
-@import "~@wordpress/base-styles/mixins";
-@import "~@wordpress/base-styles/breakpoints";
-@import "~@wordpress/base-styles/animations";
-@import "~@wordpress/base-styles/z-index";
-@import "~@wordpress/base-styles/default-custom-properties";
-
-@import "./config/button";
-@import "./components/homeBanner";
-@import "./components/statsCard";

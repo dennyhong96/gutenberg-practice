@@ -8,4 +8,4 @@ import "./blocks/statsCard";
 import "./blocks/partners";
 import "./blocks/bigBg";
 
-import "./blockStyles";
+// import "./blockStyles";
